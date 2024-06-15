@@ -1,6 +1,6 @@
 require "colorize"
 class PlayArea
-  attr_accessor :a1, :a2, :a3, :b1, :b2, :b3, :c1, :c2, :c3
+  attr_accessor
 
   def initialize
     board
@@ -9,36 +9,36 @@ class PlayArea
   def clear_board
   end
 
-  def pos(row, column)
-    " "
+  def pos_gen(row, column)
+    "R".colorize(:red)
   end
 
   def board
-    puts "    A   B   C   D"
-    puts "   |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|"
-    puts "1  | #{pos(1, 'A')} | #{pos(1, 'B')} | #{pos(1, 'C')} | #{pos(1, 'D')} |"
+    puts "     A   B   C   D |    F    |"
+    puts "   |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
+    puts "1  | #{pos_gen(1, 'A')} | #{pos_gen(1, 'B')} | #{pos_gen(1, 'C')} | #{pos_gen(1, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "2  | #{pos(2, 'A')} | #{pos(2, 'B')} | #{pos(2, 'C')} | #{pos(2, 'D')} |"
+    puts "2  | #{pos_gen(2, 'A')} | #{pos_gen(2, 'B')} | #{pos_gen(2, 'C')} | #{pos_gen(2, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "3  | #{pos(3, 'A')} | #{pos(3, 'B')} | #{pos(3, 'C')} | #{pos(3, 'D')} |"
+    puts "3  | #{pos_gen(3, 'A')} | #{pos_gen(3, 'B')} | #{pos_gen(3, 'C')} | #{pos_gen(3, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "4  | #{pos(4, 'A')} | #{pos(4, 'B')} | #{pos(4, 'C')} | #{pos(4, 'D')} |"
+    puts "4  | #{pos_gen(4, 'A')} | #{pos_gen(4, 'B')} | #{pos_gen(4, 'C')} | #{pos_gen(4, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "5  | #{pos(5, 'A')} | #{pos(5, 'B')} | #{pos(5, 'C')} | #{pos(5, 'D')} |"
+    puts "5  | #{pos_gen(5, 'A')} | #{pos_gen(5, 'B')} | #{pos_gen(5, 'C')} | #{pos_gen(5, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "6  | #{pos(6, 'A')} | #{pos(6, 'B')} | #{pos(6, 'C')} | #{pos(6, 'D')} |"
+    puts "6  | #{pos_gen(6, 'A')} | #{pos_gen(6, 'B')} | #{pos_gen(6, 'C')} | #{pos_gen(6, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "7  | #{pos(7, 'A')} | #{pos(7, 'B')} | #{pos(7, 'C')} | #{pos(7, 'D')} |"
+    puts "7  | #{pos_gen(7, 'A')} | #{pos_gen(7, 'B')} | #{pos_gen(7, 'C')} | #{pos_gen(7, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "8  | #{pos(8, 'A')} | #{pos(8, 'B')} | #{pos(8, 'C')} | #{pos(8, 'D')} |"
+    puts "8  | #{pos_gen(8, 'A')} | #{pos_gen(8, 'B')} | #{pos_gen(8, 'C')} | #{pos_gen(8, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "9  | #{pos(9, 'A')} | #{pos(9, 'B')} | #{pos(9, 'C')} | #{pos(9, 'D')} |"
+    puts "9  | #{pos_gen(9, 'A')} | #{pos_gen(9, 'B')} | #{pos_gen(9, 'C')} | #{pos_gen(9, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "10 | #{pos(10, 'A')} | #{pos(10, 'B')} | #{pos(10, 'C')} | #{pos(10, 'D')} |"
+    puts "10 | #{pos_gen(10, 'A')} | #{pos_gen(10, 'B')} | #{pos_gen(10, 'C')} | #{pos_gen(10, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "11 | #{pos(11, 'A')} | #{pos(11, 'B')} | #{pos(11, 'C')} | #{pos(11, 'D')} |"
+    puts "11 | #{pos_gen(11, 'A')} | #{pos_gen(11, 'B')} | #{pos_gen(11, 'C')} | #{pos_gen(11, 'D')} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
-    puts "12 | #{pos(12, 'A')} | #{pos(12, 'B')} | #{pos(12, 'C')} | #{pos(12, 'D')} |"
+    puts "12 | #{pos_gen(12, 'A')} | #{pos_gen(12, 'B')} | #{pos_gen(12, 'C')} | #{pos_gen(12, 'D')} | Feedback"
     puts "   |⎽⎽⎽|⎽⎽⎽|⎽⎽⎽|⎽⎽⎽|"
     puts ""
   end

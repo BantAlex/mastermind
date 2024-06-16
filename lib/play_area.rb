@@ -1,4 +1,6 @@
 require "colorize"
+
+# creates the board
 class PlayArea
   attr_accessor :position
 

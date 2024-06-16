@@ -39,10 +39,10 @@ class SecretCode
   end
 
   def add_choice_to_board
-    match.position["A1"] = choice[0]
-    match.position["B1"] = choice[1]
-    match.position["C1"] = choice[2]
-    match.position["D1"] = choice[3]
+    match.position.each do |row, letters|
+      letters.each do |letter, value|
+      end
+    end
     match.board
   end
 

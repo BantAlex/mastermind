@@ -1,16 +1,25 @@
 require "colorize"
 class PlayArea
-  attr_accessor
+  attr_accessor :rows, :pos_name
 
   def initialize
-    board
+    clear_board
   end
 
   def clear_board
+    self.rows = {}
+    ("A".."D").each do |c|
+      (1..12).each do |r|
+        pos_name = c.to_s + r.to_s
+        rows[pos_name] = " "
+      end
+    end
+    board
   end
 
   def pos_gen(row, column)
-    "R".colorize(:red)
+    @pos_name = column.to_s + row.to_s
+    rows[pos_name]
   end
 
   def board
@@ -44,4 +53,4 @@ class PlayArea
   end
 end
 
-board = PlayArea.new
+test = PlayArea.new

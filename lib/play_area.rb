@@ -1,14 +1,27 @@
-require "./lib/secret_code"
 require "colorize"
 class PlayArea
   attr_accessor :position
 
   def initialize
+    puts ""
+    puts "                  Welcome to Mastermind!      ".colorize(:magenta)
+    puts "                  ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻"
+    puts ""
+    puts "There are 6 colors avaible, 4 of wich will be the secret code"
+    puts ""
+    puts "Thsese colors are:"
+    puts "#{'R'.colorize(:red)} - Red"
+    puts "#{'G'.colorize(:green)} - Green"
+    puts "#{'B'.colorize(:blue)} - Blue"
+    puts "#{'M'.colorize(:magenta)} - Magenta"
+    puts "#{'C'.colorize(:cyan)} - Cyan"
+    puts ""
     clear_board
+    puts "You have 12 tries to find the correct colors and their position on the board."
+    puts ""
   end
 
   def clear_board
-    puts "Welcome to Mastermind!"
     self.position = {}
     ("A".."D").each do |c|
       (1..12).each do |r|

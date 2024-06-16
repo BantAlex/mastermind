@@ -3,14 +3,17 @@ class SecretCode
   attr_accessor :colors, :secret_code, :match
 
   def initialize
+    self.colors = %w[R G B M C Y]
     @match = PlayArea.new
-    self.colors = %w[R G B P O Y]
   end
 
-  def get_code
+  def generate_code
     @secret_code = colors.sample(4)
+  end
+
+  def make_choice
+    choice = gets.chomp
   end
 end
 
 test = SecretCode.new
-p test.get_code

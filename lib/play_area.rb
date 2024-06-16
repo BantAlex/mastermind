@@ -1,3 +1,4 @@
+require "./lib/secret_code"
 require "colorize"
 class PlayArea
   attr_accessor :position
@@ -7,6 +8,7 @@ class PlayArea
   end
 
   def clear_board
+    puts "Welcome to Mastermind!"
     self.position = {}
     ("A".."D").each do |c|
       (1..12).each do |r|
@@ -18,8 +20,8 @@ class PlayArea
   end
 
   def board
-    puts "     A   B   C   D |    F    |"
-    puts "   |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
+    puts "     A   B   C   D | Feedback |"
+    puts "   |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
     puts "1  | #{position['A1']} | #{position['B1']} | #{position['C1']} | #{position['D1']} | Feedback"
     puts "   |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
     puts "2  | #{position['A2']} | #{position['B2']} | #{position['C2']} | #{position['D2']} | Feedback"
@@ -47,5 +49,3 @@ class PlayArea
     puts ""
   end
 end
-
-test = PlayArea.new

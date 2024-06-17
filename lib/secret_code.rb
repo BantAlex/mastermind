@@ -13,6 +13,10 @@ class SecretCode
 
   def generate_code
     @secret_code = colors.sample(4)
+    @secret_code.map! do |code|
+      colorize(code)
+    end
+    @secret_code
   end
 
   def make_choice
@@ -29,8 +33,11 @@ class SecretCode
   def add_choice_to_board
     (1..12).each do |r|
       ("A".."D").each do |c|
+        puts "Nice" if match.position[2].values == @secret_code
         match.position[r][c] = colorize(choice)
         match.board
+        p match.position[2].values
+        p @secret_code
         make_choice
       end
     end
@@ -44,8 +51,6 @@ class SecretCode
     when "M" then color.colorize(:magenta)
     when "C" then color.colorize(:cyan)
     when "Y" then color.colorize(:yellow)
-    else
-      p "what"
     end
   end
 end

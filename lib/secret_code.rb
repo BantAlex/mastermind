@@ -35,6 +35,9 @@ class SecretCode
   def add_choice_to_board
     (1..12).each do |r|
       ("A".."D").each do |c|
+        # "C" because it goes to the next row before "D" of the occuring row can be accessed
+        feedback(r) unless match.position[r]["C"] == " "
+
         match.position[r][c] = colorize(choice)
         match.board
         make_choice

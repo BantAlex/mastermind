@@ -20,7 +20,7 @@ class SecretCode
   end
 
   def make_choice
-    won if found? # maybe add another method for feedback?
+    won if found?
     p @secret_code # should be removed when project is done
     print "Please select your color: "
     self.choice = gets.chomp.upcase
@@ -40,6 +40,10 @@ class SecretCode
         make_choice
       end
     end
+  end
+
+  def feedback(row)
+    match.feedback[row - 1] = "B W B B"
   end
 
   def found?

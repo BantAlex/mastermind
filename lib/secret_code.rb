@@ -22,6 +22,8 @@ class SecretCode
   def make_choice
     print "Please select your color: "
     self.choice = gets.chomp.upcase
+    puts "hi" if found?
+    p @secret_code
 
     # length check and inclusion check
     return choice if choice.length == 1 && colors.include?(choice)
@@ -33,19 +35,16 @@ class SecretCode
   def add_choice_to_board
     (1..12).each do |r|
       ("A".."D").each do |c|
-        puts "Correct" if found?
-        p @secret_code
         match.position[r][c] = colorize(choice)
         match.board
+        p match.position[r].values
         make_choice
       end
     end
   end
 
   def found?
-    match.position.each_value do |letters|
-      true if letters.values == @secret_code
-    end
+    match.position.values.any? { |letters| letters.values == @secret_code }
   end
 
   def colorize(color)

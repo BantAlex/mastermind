@@ -21,6 +21,7 @@ class PlayArea
     puts ""
     clear_board
     puts "You have 12 tries to find the correct colors and their position on the board."
+    puts "You should input one color at a time."
     puts ""
   end
 

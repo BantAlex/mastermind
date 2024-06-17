@@ -8,6 +8,7 @@ class SecretCode
     @match = PlayArea.new
     generate_code
     make_choice
+    add_choice_to_board
   end
 
   def generate_code
@@ -15,38 +16,37 @@ class SecretCode
   end
 
   def make_choice
-    print "Please select your colors(A1-D1): "
-    self.choice = gets.chomp.upcase.split
+    print "Please select your color: "
+    self.choice = gets.chomp.upcase
 
-    # length check
-    if choice.length > 4
-      puts "That's too many colors!"
-      make_choice
-    elsif choice.length < 4
-      puts "You need #{4 - choice.length} more color(s)!"
-      make_choice
-    end
+    # length check and inclusion check
+    return colorize(choice) if choice.length == 1 && colors.include?(choice)
 
-    # inclusion check
-    choice.each do |chosen_color|
-      next if colors.include?(chosen_color)
-
-      puts "#{chosen_color} is not a valid option"
-      make_choice
-    end
-
-    add_choice_to_board
+    puts "#{choice} is not a valid option."
+    make_choice
   end
 
   def add_choice_to_board
-    match.position.each do |row, letters|
-      letters.each do |letter, value|
+    (1..12).each do |r|
+      ("A".."D").each do |c|
+        match.position[r][c] = choice
+        match.board
+        make_choice
       end
     end
-    match.board
   end
 
-  def colorize
+  def colorize(color)
+    case color
+    when "R" then color.colorize(:red)
+    when "G" then color.colorize(:green)
+    when "B" then color.colorize(:blue)
+    when "M" then color.colorize(:magenta)
+    when "C" then color.colorize(:cyan)
+    when "Y" then color.colorize(:yellow)
+    else
+      p "what"
+    end
   end
 end
 

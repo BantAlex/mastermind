@@ -50,16 +50,27 @@ class SecretCode
 
     @chosen_row = match.position[@current_row].values
 
-    match.feedback[row - 1] = "B G R B"
-    if @chosen_row.any? { |value| @secret_code.include?(value) }
-      p "yeeee"
-    else
-      p "nOOOOOO"
+    match.feedback[row - 1] += " R ".colorize(:red) unless @chosen_row.any? { |value| @secret_code.include?(value) }
+    (0...4).each do |i|
+      match.feedback[row - 1] += " G ".colorize(:green) if @chosen_row[i] == @secret_code[i]
+      if @chosen_row.any? { |value| @secret_code.include?(value) && @chosen_row[i] != @secret_code[i] }
+        match.feedback[row - 1] += " B ".colorize(:blue)
+      end
     end
+
+    # if @chosen_row.any? { |value| @secret_code.include?(value) }
+    #   p "yeeee"
+    #   match.feedback[row - 1] += " B ".colorize(:blue)
+    #   (0..4).each do |i|
+    #     match.feedback[row - 1] += " G ".colorize(:green) if @chosen_row[i] == @secret_code[i]
+    #   end
+    # else
+    #   match.feedback[row - 1] += " R ".colorize(:red)
+    # end
   end
 
   def found?
-    false unless match.position.values.any? { |letters| letters.values == @secret_code }
+    return unless match.position.values.any? { |letters| letters.values == @secret_code }
 
     puts "Congrats! You found the secret code: #{@secret_code.join(' ')}"
     replay?

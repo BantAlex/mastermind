@@ -37,8 +37,8 @@ class PlayArea
   end
 
   def board
-    puts "               A   B   C   D | Feedback |"
-    puts "             |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
+    puts "               A   B   C   D |  Feedback  |"
+    puts "             |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
     puts "          1  | #{position[1]['A']} | #{position[1]['B']} | #{position[1]['C']} | #{position[1]['D']} | #{feedback[0]}"
     puts "             |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
     puts "          2  | #{position[2]['A']} | #{position[2]['B']} | #{position[2]['C']} | #{position[2]['D']} | #{feedback[1]}"

@@ -1,11 +1,12 @@
 require "./lib/play_area"
 # creates the secret code and gets players choice
 class SecretCode
-  attr_accessor :colors, :secret_code, :match, :choice
+  attr_accessor :colors, :secret_code, :match, :choice, :current_row, :choosen_row
 
   def initialize
     self.colors = %w[R G B M C Y]
     @match = PlayArea.new
+    @current_row = 0
     generate_code
     make_choice
     add_choice_to_board
@@ -20,7 +21,7 @@ class SecretCode
   end
 
   def make_choice
-    won if found?
+    found?
     p @secret_code # should be removed when project is done
     print "Please select your color: "
     self.choice = gets.chomp.upcase
@@ -34,11 +35,10 @@ class SecretCode
 
   def add_choice_to_board
     (1..12).each do |r|
+      @current_row = r
       ("A".."D").each do |c|
-        # "C" because it goes to the next row before "D" of the occuring row can be accessed
-        feedback(r) unless match.position[r]["C"] == " "
-
         match.position[r][c] = colorize(choice)
+        feedback(@current_row) unless match.position[@current_row]["D"] == " "
         match.board
         make_choice
       end
@@ -46,16 +46,22 @@ class SecretCode
   end
 
   def feedback(row)
-    match.feedback[row - 1] = "B W B B"
+    return if row.zero?
+
+    @chosen_row = match.position[@current_row].values
+
+    match.feedback[row - 1] = "B G R B"
+    if @chosen_row.any? { |value| @secret_code.include?(value) }
+      p "yeeee"
+    else
+      p "nOOOOOO"
+    end
   end
 
   def found?
-    match.position.values.any? { |letters| letters.values == @secret_code }
-  end
+    false unless match.position.values.any? { |letters| letters.values == @secret_code }
 
-  def won
-    print "Congrats! You found the secret code:"
-    puts @secret_code.join(" ")
+    puts "Congrats! You found the secret code: #{@secret_code.join(' ')}"
     replay?
   end
 

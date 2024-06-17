@@ -12,9 +12,9 @@ class PlayArea
     puts "There are 6 colors avaible, 4 of wich will be the secret code"
     puts ""
     puts "Thsese colors are:"
-    puts "#{'R'.colorize(:red)} - Red"
-    puts "#{'G'.colorize(:green)} - Green"
-    puts "#{'B'.colorize(:blue)} - Blue"
+    puts "#{'R'.colorize(:red)} - Red - In feedback: means that you have a wrong color."
+    puts "#{'G'.colorize(:green)} - Green - In feedback: means that you have a right color in the right position."
+    puts "#{'B'.colorize(:blue)} - Blue - In feedback: means that you have a right color in the wrong position."
     puts "#{'M'.colorize(:magenta)} - Magenta"
     puts "#{'C'.colorize(:cyan)} - Cyan"
     puts "#{'Y'.colorize(:yellow)} - Yellow"
@@ -27,7 +27,7 @@ class PlayArea
 
   def clear_board
     self.position = Hash.new { |h, k| h[k] = {} }
-    self.feedback = Array.new(12, "")
+    self.feedback = Array.new(12, " ")
     ("A".."D").each do |c|
       (1..12).each do |r|
         position[r][c] = " "

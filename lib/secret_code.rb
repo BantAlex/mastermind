@@ -20,10 +20,10 @@ class SecretCode
   end
 
   def make_choice
+    won if found? # maybe add another method for feedback?
+    p @secret_code # should be removed when project is done
     print "Please select your color: "
     self.choice = gets.chomp.upcase
-    puts "hi" if found? # maybe add another method for feedback?
-    p @secret_code # should be removed when done
 
     # length and inclusion check
     return choice if choice.length == 1 && colors.include?(choice)
@@ -44,6 +44,26 @@ class SecretCode
 
   def found?
     match.position.values.any? { |letters| letters.values == @secret_code }
+  end
+
+  def won
+    print "Congrats! You found the secret code:"
+    puts @secret_code.join(" ")
+    replay?
+  end
+
+  def replay?
+    print "Would you like to play again?(y/n): "
+    ans = gets.chomp.downcase
+    if ans == "y"
+      @match.clear_board
+    elsif ans == "n"
+      puts "Have a nice day!"
+      exit
+    else
+      puts "That's not a valid option."
+      replay?
+    end
   end
 
   def colorize(color)

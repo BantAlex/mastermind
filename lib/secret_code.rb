@@ -20,7 +20,7 @@ class SecretCode
     self.choice = gets.chomp.upcase
 
     # length check and inclusion check
-    return colorize(choice) if choice.length == 1 && colors.include?(choice)
+    return choice if choice.length == 1 && colors.include?(choice)
 
     puts "#{choice} is not a valid option."
     make_choice
@@ -29,7 +29,7 @@ class SecretCode
   def add_choice_to_board
     (1..12).each do |r|
       ("A".."D").each do |c|
-        match.position[r][c] = choice
+        match.position[r][c] = colorize(choice)
         match.board
         make_choice
       end

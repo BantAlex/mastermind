@@ -57,6 +57,7 @@ class SecretCode
     ans = gets.chomp.downcase
     if ans == "y"
       @match.clear_board
+      initialize # hope to the almighty this works
     elsif ans == "n"
       puts "Have a nice day!"
       exit

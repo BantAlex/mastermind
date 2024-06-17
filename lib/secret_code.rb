@@ -22,10 +22,10 @@ class SecretCode
   def make_choice
     print "Please select your color: "
     self.choice = gets.chomp.upcase
-    puts "hi" if found?
-    p @secret_code
+    puts "hi" if found? # maybe add another method for feedback?
+    p @secret_code # should be removed when done
 
-    # length check and inclusion check
+    # length and inclusion check
     return choice if choice.length == 1 && colors.include?(choice)
 
     puts "#{choice} is not a valid option."
@@ -37,7 +37,6 @@ class SecretCode
       ("A".."D").each do |c|
         match.position[r][c] = colorize(choice)
         match.board
-        p match.position[r].values
         make_choice
       end
     end

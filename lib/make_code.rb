@@ -60,5 +60,3 @@ class MakeCode < BreakCode
     end
   end
 end
-
-test = MakeCode.new

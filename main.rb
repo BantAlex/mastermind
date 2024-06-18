@@ -1,6 +1,7 @@
 require "./lib/play_area"
 require "./lib/break_code"
 require "./lib/make_code"
+require ".lib/computer_logic"
 
 # make player choose to make or break
 

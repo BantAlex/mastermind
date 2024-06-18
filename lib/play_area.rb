@@ -14,10 +14,10 @@ class PlayArea
     puts "Thsese colors are:"
     puts "#{'R'.colorize(:red)} - Red - In feedback: means that you have a wrong color."
     puts "#{'G'.colorize(:green)} - Green - In feedback: means that you have a right color in the right position."
-    puts "#{'B'.colorize(:blue)} - Blue - In feedback: means that you have a right color in the wrong position."
+    puts "#{'B'.colorize(:blue)} - Blue"
     puts "#{'M'.colorize(:magenta)} - Magenta"
     puts "#{'C'.colorize(:cyan)} - Cyan"
-    puts "#{'Y'.colorize(:yellow)} - Yellow"
+    puts "#{'Y'.colorize(:yellow)} - Yellow - In feedback: means that you have a right color in the wrong position."
     puts ""
     clear_board
     puts "You have 12 tries to find the correct colors and their position on the board."
@@ -37,8 +37,8 @@ class PlayArea
   end
 
   def board
-    puts "               A   B   C   D |  Feedback  |"
-    puts "             |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
+    puts "               A   B   C   D | Feedback |"
+    puts "             |⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺|⎺⎺⎺⎺⎺⎺⎺⎺⎺⎺|"
     puts "          1  | #{position[1]['A']} | #{position[1]['B']} | #{position[1]['C']} | #{position[1]['D']} | #{feedback[0]}"
     puts "             |⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|⎻⎻⎻|"
     puts "          2  | #{position[2]['A']} | #{position[2]['B']} | #{position[2]['C']} | #{position[2]['D']} | #{feedback[1]}"

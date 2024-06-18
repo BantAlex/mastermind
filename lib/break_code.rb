@@ -1,10 +1,13 @@
 require "./lib/play_area"
-# creates the secret code and gets players choice
-class SecretCode
+# creates the secret code and get player's choice
+class BreakCode
   attr_accessor :colors, :secret_code, :match, :choice, :current_row, :choosen_row
 
   def initialize
     self.colors = %w[R G B M C Y]
+  end
+
+  def player_guess
     @match = PlayArea.new
     @current_row = 0
     generate_code
@@ -22,7 +25,6 @@ class SecretCode
 
   def make_choice
     found?
-    p @secret_code # should be removed when project is done
     print "Please select your color: "
     self.choice = gets.chomp.upcase
 
@@ -51,7 +53,7 @@ class SecretCode
     @chosen_row = match.position[@current_row].values
 
     (0..3).each do |i|
-      match.feedback[row - 1] += "G ".colorize(:green) if @chosen_row[i] == @secret_code[i] # M C B R
+      match.feedback[row - 1] += "G ".colorize(:green) if @chosen_row[i] == @secret_code[i]
       if @secret_code.include?(@chosen_row[i]) && @chosen_row[i] != @secret_code[i]
         match.feedback[row - 1] += "Y ".colorize(:yellow)
       elsif @chosen_row.any? { |value| !@secret_code.include?(value) && @chosen_row[i] != @secret_code[i] }
@@ -72,7 +74,7 @@ class SecretCode
     ans = gets.chomp.downcase
     if ans == "y"
       @match.clear_board
-      initialize # hope to the almighty this works
+      player_guess # hope to the almighty this works
     elsif ans == "n"
       puts "Have a nice day!"
       exit
@@ -93,5 +95,3 @@ class SecretCode
     end
   end
 end
-
-test = SecretCode.new

@@ -34,9 +34,15 @@ class ComputerLogic < PlayArea
         board
         continue?
         @counter = 0
+        if @computer_guess == @player_code
+          puts "The computer guessed your code correctly ! "
+          replay?
+        end
         next
       end
     end
+    puts "The computer failed to find the your code."
+    replay?
   end
 
   def continue?
@@ -50,6 +56,20 @@ class ComputerLogic < PlayArea
     else
       puts "That's not a valid option."
       continue?
+    end
+  end
+
+  def replay?
+    print "Would you like to play again?(y/n): "
+    ans = gets.chomp.downcase
+    if ans == "y"
+      initialize
+    elsif ans == "n"
+      puts "Have a nice day!"
+      exit
+    else
+      puts "That's not a valid option."
+      replay?
     end
   end
 end

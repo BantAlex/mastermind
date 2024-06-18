@@ -51,8 +51,8 @@ class SecretCode
     @chosen_row = match.position[@current_row].values
 
     (0..3).each do |i|
-      match.feedback[row - 1] += "G ".colorize(:green) if @chosen_row[i] == @secret_code[i]
-      if @chosen_row.any? { |value| @secret_code.include?(value) && @chosen_row[i] != @secret_code[i] }
+      match.feedback[row - 1] += "G ".colorize(:green) if @chosen_row[i] == @secret_code[i] # M C B R
+      if @secret_code.include?(@chosen_row[i]) && @chosen_row[i] != @secret_code[i]
         match.feedback[row - 1] += "Y ".colorize(:yellow)
       elsif @chosen_row.any? { |value| !@secret_code.include?(value) && @chosen_row[i] != @secret_code[i] }
         match.feedback[row - 1] += "R ".colorize(:red)

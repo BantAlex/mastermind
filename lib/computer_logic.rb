@@ -3,10 +3,11 @@ require "./lib/break_code"
 require "./lib/make_code"
 # this is how the computer generates a guess and inputs it in the board
 class ComputerLogic < PlayArea
-  attr_accessor :player_code, :computer_guess, :colors, :counter, :current_row
+  attr_accessor :player_code, :computer_guess, :colors, :counter, :current_row, :code
 
   def initialize
     @player_code = MakeCode.new
+    @code = @player_code.secret_code
     self.colors = %w[R G B M C Y]
     gen_computer_guess
     clear_board
@@ -33,7 +34,7 @@ class ComputerLogic < PlayArea
         next unless @counter == 4
 
         board
-        if @computer_guess == @player_code.secret_code
+        if @computer_guess == @code
           board
           puts "The computer guessed your code correctly ! "
           replay?
@@ -50,14 +51,28 @@ class ComputerLogic < PlayArea
 
   def computer_intellect
     (0..3).each do |i|
-      # remove color if it is not included
-      unless @player_code.secret_code.include?(position[@current_row].values[i])
+      # remove color from sample if it is not included
+      unless @code.include?(position[@current_row].values[i])
         colors.delete(position[@current_row].values[i])
+        feedback[@current_row - 1] += "R ".colorize(:red)
       end
       # keep the color in the same spot if it's included
-      computer_guess[i] = @player_code.secret_code[i] if position[@current_row].values[i] == @player_code.secret_code[i]
+      if position[@current_row].values[i] == @code[i]
+        computer_guess[i] = @code[i]
+        feedback[@current_row - 1] += "G ".colorize(:green)
+      end
+      # add yellow feedback
+      if @code.include?(position[@current_row].values[i]) && position[@current_row].values[i] != @code[i]
+        feedback[@current_row - 1] += "Y ".colorize(:yellow)
+      end
+      # don't put the same color twice
 
-      # don't put the same color in the same spot if it's wrong
+      # p position[@current_row].values
+      # p "split"
+      # p @computer_guess[i]
+      # if position[@current_row].values.include?(@computer_guess[i])
+      #   @computer_guess[i] = @player_code.colorize(colors.sample(1))
+      # end
     end
   end
 

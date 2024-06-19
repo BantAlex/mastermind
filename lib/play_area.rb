@@ -5,6 +5,10 @@ class PlayArea
   attr_accessor :position, :feedback
 
   def initialize
+    rules
+  end
+
+  def rules
     puts ""
     puts "                  Welcome to Mastermind!      ".colorize(:magenta)
     puts "                  ⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻⎻"

@@ -14,8 +14,8 @@ class ComputerLogic < PlayArea
     add_guess_to_board
   end
 
-  def gen_computer_guess
-    @computer_guess = colors.sample(4)
+  def gen_computer_guess(sample = 4)
+    @computer_guess = colors.sample(sample)
 
     @computer_guess.map! do |code|
       @player_code.colorize(code)
@@ -41,7 +41,6 @@ class ComputerLogic < PlayArea
         end
         continue?
         @counter = 0
-
         next
       end
     end
@@ -51,6 +50,8 @@ class ComputerLogic < PlayArea
 
   def computer_intellect
     (0..3).each do |i|
+      # don't put the same color twice
+
       # remove color from sample if it is not included
       unless @code.include?(position[@current_row].values[i])
         colors.delete(position[@current_row].values[i])
@@ -65,14 +66,6 @@ class ComputerLogic < PlayArea
       if @code.include?(position[@current_row].values[i]) && position[@current_row].values[i] != @code[i]
         feedback[@current_row - 1] += "Y ".colorize(:yellow)
       end
-      # don't put the same color twice
-
-      # p position[@current_row].values
-      # p "split"
-      # p @computer_guess[i]
-      # if position[@current_row].values.include?(@computer_guess[i])
-      #   @computer_guess[i] = @player_code.colorize(colors.sample(1))
-      # end
     end
   end
 

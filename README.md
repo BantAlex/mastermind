@@ -1,7 +1,6 @@
 # mastermind
-
-#future-feature: Include option for the player input the code and the computer to guesss
-    #make method #make_code for player to input the code
-    #maybe on another seperate board?
-    #after that, input the given code to the @secret_code variable
+# Mastermind game with 2 modes
+    1 - Break the code
+    2 - Make the code
     
+#Issue: If the player wants to make the code, the computer is able to insert the same color twice on the board
